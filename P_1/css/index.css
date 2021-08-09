@@ -8,24 +8,36 @@ body{
     color: white;
 }
 #first{
-    background-color: white;
-    color: black;
     height: 30px;
     width: 250px;
     margin: 15px;
     padding: 15px;
 }
+.f{
+    background-color: white;
+    color: black;
+}
 #second{
-    background-color: black;
-    color: white;
     height: 30px;
     width: 250px;
     margin: 15px;
     padding: 15px;
+}
+.s{
+    background-color: black;
+    color: white;
 }
 input{
     margin: 15px;
     padding: 15px;
     background-color: blue;
     color: white;
+}
+.cl1{
+    background-color: black;
+    color: white;
+}
+.cl2{
+    background-color: white;
+    color: black;
 }
