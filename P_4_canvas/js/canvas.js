@@ -2,6 +2,8 @@ function makeLime(){
 
     d = document.getElementById("getThis");
     d.style.backgroundColor = "Lime";
+    ctx = d.getContext("2d");
+    ctx.clearRect(0,0,d.width,d.height);
 
 }
 
@@ -16,5 +18,5 @@ function makeYellow(){
     ctx.fillStyle = "black";
     ctx.font = "30px Arial";
     ctx.fillText("Hello!",10,100);
-    
+
 }
