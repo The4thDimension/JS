@@ -1,0 +1,20 @@
+body{
+
+    margin: 10px;
+    padding: 10px;
+
+}
+
+h1{
+
+    color: grey;
+
+}
+
+.can{
+
+    height: 300px;
+    width: 500px;
+    border: 1px solid black;
+    
+}

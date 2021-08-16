@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <title>Green Screen</title>
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    </head>
+
+    <body>
+
+        <h1>
+            Green Screen Problem
+        </h1>
+        <br>
+        <canvas id="can1" class="can"></canvas>
+        <canvas id="can2" class="can"></canvas>
+        <br><br>
+        FG Image: 
+        <input type="file" multiple = "false" accept="image/*" id="fgImage" onchange="fgImage()">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        BG Image: 
+        <input type="file" multiple = "false" accept="image/*" id="bgImage" onchange="bgImage()">
+        <br><br>
+        <input type="button" value="Transform" id="toGreen" onclick="toGreen()">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="button" value="Clear" id="clearScreen" onclick="clearScreen()">
+
+
+
+        <script src = "https://www.dukelearntoprogram.com//course1/common/js/image/SimpleImage.js"></script>
+        <script src="js/script.js"></script>
+
+    </body>
+
+</html>
