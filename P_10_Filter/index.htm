@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <title>
+            Home
+        </title>
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+
+    </head>
+
+    <body>
+
+        <h1>
+            Image Filter
+        </h1>
+
+        <canvas id = "can"></canvas>
+        <br>
+        <input type = "file" multiple = "false" accept = "image/*" onchange = "uploadImage()" id = "img">
+        <h3>
+            Choose a filter
+        </h3>
+        <input type = "button" value = "Grey" onclick = "doGrey()" class = "btn">
+        <input type = "button" value = "Red" onclick = "doRed()" class = "btn">
+        <input type = "button" value = "Blur" onclick = "doBlur()" class = "btn">
+        <br>
+        <br>
+        <input type = "button" value = "Reset" onclick = "doReset()" class = "btn">
+        <script src = "https://www.dukelearntoprogram.com//course1/common/js/image/SimpleImage.js"></script>
+        <script src="js/script.js"></script>
+
+    </body>
+
+</html>
