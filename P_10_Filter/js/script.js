@@ -20,6 +20,7 @@ function doGrey(){
   if(imageGrey == null)
     alert("No Image");
   else{
+    document.getElementById("can").style.filter = "none";
     for(var pixel of imageGrey.values()){
       var avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
       pixel.setRed(avg);
@@ -37,6 +38,7 @@ function doRed(){
   if(imageRed == null)
     alert("No Image");
   else{
+    document.getElementById("can").style.filter = "none";
     for(var pixel of imageRed.values()){
       pixel.setRed(255);
       var ctx = canvas.getContext("2d");
@@ -51,6 +53,7 @@ function doReset(){
   if(image == null)
     alert("No Image");
   else{
+    document.getElementById("can").style.filter = "none";
     var ctx = canvas.getContext("2d");
     ctx.clearRect(0,0,canvas.width,canvas.height);
     image.drawTo(canvas);
@@ -63,14 +66,26 @@ function doBlur(){
   if(imageBlur == null)
     alert("No image");
   else{
-    var red = 0;
-    var green = 0;
-    var blue = 0;
-    var xCount = 0;
-    var yCount = 0;
-    var height = imageBlur.getHeight();
-    var width = imageBlur.getWidth();
-    for(var y = 0;y <= height;y = y + 3){
+    document.getElementById("can").style.filter = "blur(8px)";
+  }
+}
+
+
+
+
+
+
+  /*filter: blur(8px);*/
+
+/*One of my failed attempts to do the blur feature manually*/
+
+
+
+/*A loop which doesn't work*/
+
+
+
+/*for(var y = 0;y <= height;y = y + 3){
       yCount = y;
       for(var x = 0;x <= width;x = x + 3){
         xCount = x;
@@ -99,6 +114,18 @@ function doBlur(){
           yCount = y;
         }
       }
-    }
-  }
-}
+    }*/
+
+
+
+/*Resources for the loop which doesn't work
+
+
+
+    var red = 0;
+    var green = 0;
+    var blue = 0;
+    var xCount = 0;
+    var yCount = 0;
+    var height = imageBlur.getHeight();
+    var width = imageBlur.getWidth();*/
