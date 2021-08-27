@@ -2,7 +2,6 @@ canvas = document.getElementById("can");
 var image = null;
 var imageGrey = null;
 var imageRed = null;
-var imageBlur = null;
 var imageRedHue = null;
 var imageRainbow = null;
 
@@ -12,7 +11,6 @@ function uploadImage(){
   image = new SimpleImage(img);
   imageGrey = new SimpleImage(img);
   imageRed = new SimpleImage(img);
-  imageBlur = new SimpleImage(img);
   imageRedHue = new SimpleImage(img);
   imageRainbow = new SimpleImage(img);
   image.drawTo(canvas);
@@ -67,10 +65,59 @@ function doReset(){
 
 function doBlur(){
 
-  if(imageBlur == null)
+  if(image == null)
     alert("No image");
   else{
-    document.getElementById("can").style.filter = "blur(8px)";
+
+    var imageBlur = new SimpleImage(image.getWidth(),image.getHeight());
+
+    for(var pixel of image.values()){
+
+      var rand = Math.random();
+      var x = pixel.getX();
+      var y = pixel.getY();
+      var blurPixel = imageBlur.getPixel(x,y);
+
+      if(rand == 0){
+
+        blurPixel.setRed(pixel.getRed());
+        blurPixel.setBlue(pixel.getBlue());
+        blurPixel.setGreen(pixel.getGreen());
+
+      }
+
+      else{
+
+        var xRand = Math.floor((Math.random() * 10) + 1);
+        var yRand = Math.floor((Math.random() * 10) + 1);
+
+        try{
+
+          var newPixel = image.getPixel(x + xRand,y + yRand);
+
+        }
+
+        catch(err){
+
+          var newPixel = image.getPixel(x,y);
+
+        }
+
+        finally{
+
+          blurPixel.setRed(newPixel.getRed());
+          blurPixel.setBlue(newPixel.getBlue());
+          blurPixel.setGreen(newPixel.getGreen());
+
+        }
+
+      }
+    }
+
+
+    var ctx = canvas.getContext("2d");
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    imageBlur.drawTo(canvas);
   }
 }
 
@@ -225,63 +272,3 @@ function doRainbow(){
     imageRainbow.drawTo(canvas);
   }
 }
-
-
-
-
-
-
-  /*filter: blur(8px);*/
-
-/*One of my failed attempts to do the blur feature manually*/
-
-
-
-/*A loop which doesn't work*/
-
-
-
-/*for(var y = 0;y <= height;y = y + 3){
-      yCount = y;
-      for(var x = 0;x <= width;x = x + 3){
-        xCount = x;
-        for(var i = 0;i < 3;i++){
-          for(var j = 0;j < 3;j++){
-              var pixel = imageBlur.getPixel(xCount,yCount);
-              red = red + pixel.getRed();
-              blue = blue + pixel.getBlue();
-              green = green + pixel.getGreen();
-              yCount = yCount + 1;
-          }
-          xCount = xCount + 1;
-          yCount = y;
-        }
-        xCount = x;
-        yCount = y;
-        for(var i = 0;i < 3;i++){
-          for(var j = 0;j < 3;j++){
-            var pixel = imageBlur.getPixel(xCount,yCount);
-            pixel.setRed(red / 9);
-            pixel.setBlue(blue / 9);
-            pixel.setGreen(green / 9);
-            yCount = yCount + 1;
-          }
-          xCount = xCount + 1;
-          yCount = y;
-        }
-      }
-    }*/
-
-
-
-/*Resources for the loop which doesn't work
-
-
-
-    var red = 0;
-    var green = 0;
-    var blue = 0;
-    var xCount = 0;
-    var yCount = 0;
-    var height = imageBlur.getHeight();
-    var width = imageBlur.getWidth();*/
