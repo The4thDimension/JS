@@ -3,6 +3,8 @@ var image = null;
 var imageGrey = null;
 var imageRed = null;
 var imageBlur = null;
+var imageRedHue = null;
+var imageRainbow = null;
 
 function uploadImage(){
   
@@ -11,6 +13,8 @@ function uploadImage(){
   imageGrey = new SimpleImage(img);
   imageRed = new SimpleImage(img);
   imageBlur = new SimpleImage(img);
+  imageRedHue = new SimpleImage(img);
+  imageRainbow = new SimpleImage(img);
   image.drawTo(canvas);
   
 }
@@ -67,6 +71,158 @@ function doBlur(){
     alert("No image");
   else{
     document.getElementById("can").style.filter = "blur(8px)";
+  }
+}
+
+
+function doRedHue(){
+
+  if(imageRedHue == null)
+    alert("No Image");
+  else{
+    for(var pixel of imageRedHue.values()){
+      var avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
+      if(avg < 128)
+        pixel.setRed(avg * 2);
+      else
+        pixel.setRed(255);
+      var ctx = canvas.getContext("2d");
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      imageRedHue.drawTo(canvas);
+    }
+  }
+}
+
+
+
+function doRainbow(){
+
+  if(imageRainbow == null)
+    alert("No image");
+  else{
+
+    for(var pixel of imageRainbow.values()){
+
+      var avg = (pixel.getRed() + pixel.getGreen() + pixel.getBlue()) / 3;
+      var h = imageRainbow.getHeight() / 7;
+
+      if(pixel.getY() < h){
+
+        if(avg < 128){
+          pixel.setRed(avg * 2);
+          pixel.setBlue(0);
+          pixel.setGreen(0);
+        }
+
+        else{
+          pixel.setRed(255);
+          pixel.setGreen(avg * 2 - 255);
+          pixel.setBlue(avg * 2 - 255);
+        }
+
+      }
+
+      else  if(pixel.getY() < h * 2){
+
+        if(avg < 128){
+          pixel.setRed(avg * 2);
+          pixel.setBlue(avg * 0.8);
+          pixel.setGreen(0);
+        }
+
+        else{
+          pixel.setRed(255);
+          pixel.setGreen(avg * 1.2 - 51);
+          pixel.setBlue(avg * 2 - 255);
+        }
+
+      }
+
+      else if(pixel.getY() < h * 3){
+
+        if(avg < 128){
+          pixel.setRed(avg * 2);
+          pixel.setBlue(avg * 2);
+          pixel.setGreen(0);
+        }
+
+        else{
+          pixel.setRed(255);
+          pixel.setGreen(255);
+          pixel.setBlue(avg * 2 - 255);
+        }
+
+      }
+
+      else if(pixel.getY() < h * 4){
+
+        if(avg < 128){
+          pixel.setRed(0);
+          pixel.setBlue(avg * 2);
+          pixel.setGreen(0);
+        }
+
+        else{
+          pixel.setRed(avg * 2 - 255);
+          pixel.setGreen(255);
+          pixel.setBlue(avg * 2 - 255);
+        }
+
+      }
+
+      else if(pixel.getY() < h * 5){
+
+        if(avg < 128){
+          pixel.setRed(0);
+          pixel.setBlue(0);
+          pixel.setGreen(avg * 2);
+        }
+
+        else{
+          pixel.setRed(avg * 2 - 255);
+          pixel.setGreen(avg * 2 - 255);
+          pixel.setBlue(255);
+        }
+
+      }
+
+      else if(pixel.getY() < h * 6){
+
+        if(avg < 128){
+          pixel.setRed(avg * 0.8);
+          pixel.setBlue(0);
+          pixel.setGreen(avg * 2);
+        }
+
+        else{
+          pixel.setRed(avg * 1.2 - 51);
+          pixel.setGreen(avg * 2 - 255);
+          pixel.setBlue(255);
+        }
+
+      }
+
+      else if(pixel.getY() < h * 7){
+
+        if(avg < 128){
+          pixel.setRed(avg * 0.6);
+          pixel.setBlue(0);
+          pixel.setGreen(avg * 1.6);
+        }
+
+        else{
+          pixel.setRed(avg * 0.4 - 153);
+          pixel.setGreen(avg * 2 - 255);
+          pixel.setBlue(avg * 0.4 - 153);
+        }
+
+      }
+
+    }
+
+    var ctx = canvas.getContext("2d");
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    imageRainbow.drawTo(canvas);
   }
 }
 
