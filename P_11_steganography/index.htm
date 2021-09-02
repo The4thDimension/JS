@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <title>
+            Steganography
+        </title>
+        <link rel="stylesheet" href="css/style.css" type="text/css">
+        <meta charset="utf-8">
+
+    </head>
+
+    <body>
+
+        <h1>Hide images and send secret messages</h1>
+        <canvas class = "can" id="can1"></canvas>
+        <canvas class = "can" id="can2"></canvas>
+        <canvas class = "can" id="can3"></canvas>
+        <canvas class = "can" id="can4"></canvas>
+        <br>
+        First Image:
+        <input type = "file" multiple = "false" accept = "image/*" onchange = "uploadImage1()" id = "img1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Second Image:
+        <input type = "file" multiple = "false" accept = "image/*" onchange = "uploadImage2()" id = "img2">
+        <br><br>
+        <input type="button" value="merge" onclick="combineImage()" id="merge">
+        <input type="button" value="split" onclick="getImage()" id="split">
+
+        <script src="js/script.js"></script>
+        <script src = "https://www.dukelearntoprogram.com//course1/common/js/image/SimpleImage.js"></script>
+
+    </body>
+</html>
