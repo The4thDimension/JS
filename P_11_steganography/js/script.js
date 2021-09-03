@@ -1,6 +1,5 @@
 var image1 = null;
 var image2 = null;
-var image3 = null;
 var canvas1 = document.getElementById("can1");
 var canvas2 = document.getElementById("can2");
 var canvas3 = document.getElementById("can3");
