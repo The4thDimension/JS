@@ -18,7 +18,7 @@ function crop(newImage,width,height){
             var changePixel = newImage.getPixel(x,y);
         }
 
-        catch{
+        catch(err){
             continue;
         }
 
@@ -32,7 +32,7 @@ function crop(newImage,width,height){
 
 }
 
-function cropImage(image1,image2){
+/*function cropImage(image1,image2){
 
     var h1 = image1.getHeight();
     var h2 = image2.getHeight();
@@ -54,7 +54,7 @@ function cropImage(image1,image2){
 
     }
 
-}
+}*/
 
 function uploadImage1(){
 
@@ -62,8 +62,29 @@ function uploadImage1(){
     image1 = new SimpleImage(img);
     image1.drawTo(canvas1);
     if(image2 != null){
-        image3 = cropImage(image1,image2);
+
+        var h1 = image1.getHeight();
+        var h2 = image2.getHeight();
+        if(h1 < h2){
+
+            var width = image1.getWidth();
+            alert(h1);
+            alert(width);
+            //return crop(image2,width,h1);
+
+        }
+
+        else{
+
+            var width = image2.getWidth();
+            alert(h2);
+            alert(width);
+            //return crop(image1,width,h2);
+
+        }
+
         //image3.drawTo(canvas3);
+
     }
 
 }
@@ -74,7 +95,26 @@ function uploadImage2(){
     image2 = new SimpleImage(img);
     image2.drawTo(canvas2);
     if(image1 != null){
-        image3 = cropImage(image1,image2);
+        if(image1.compl)
+        var h1 = image1.getHeight();
+        var h2 = image2.getHeight();
+        if(h1 < h2){
+
+            var width = image1.getWidth();
+            alert(parseInt(h1));
+            alert(parseInt(width));
+            //return crop(image2,width,h1);
+
+        }
+
+        else{
+
+            var width = image2.getWidth();
+            alert(h2);
+            alert(width);
+            //return crop(image1,width,h2);
+
+        }
         //image3.drawTo(canvas3);
     }
     
